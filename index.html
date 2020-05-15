@@ -15,8 +15,20 @@
 
 <body style='margin: 0; overflow: hidden;'>
     <!-- a-scene / le conteneur de notre application AR -->
-    <a-scene vr-mode-ui="enabled: false" embedded
-        arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;'>
+    <a-scene 
+    vr-mode-ui="enabled: false" 
+    embedded
+    arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;'>
+        <!-- a-entity / 
+            scale: changer la taille, 
+            Rotation: orienter l'objet, 
+            animation-mixer indique au modèle d'utiliser son animation intégrée.
+            gps-entity-place: spécifie les coordonnées géospatiales. => cet outil pour recupérer ses données gps => https://www.latlong.net/
+        -->
+        <a-entity gltf-model="./assets/totem/scene.gltf" 
+        rotation="0 180 0" scale="0.20 0.20 0.20"
+        gps-entity-place="longitude: 5.677532; latitude: 50.587879;" 
+        animation-mixer />
         <!-- a-camera / l'élément qui calcule la rotation, la position de l'utilisateur et la distance entre l'utilisateur et les lieux.-->
         <a-camera gps-camera rotation-reader></a-camera>
     </a-scene>
